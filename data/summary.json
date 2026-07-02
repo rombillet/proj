@@ -1,0 +1,9 @@
+{
+  "nodes": 5318,
+  "directedEdges": 11580,
+  "roads": 11580,
+  "trafficLights": 446,
+  "matchedTrafficLights": 354,
+  "unmatchedTrafficLights": 92,
+  "matchedSignalNodes": 294
+}
