@@ -1,0 +1,8 @@
+{
+  "intersections": 4545,
+  "roads": 10510,
+  "roadLinks": 18130,
+  "trafficLightIntersections": 268,
+  "flows": 24,
+  "simSeconds": 900
+}

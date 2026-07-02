@@ -212,9 +212,9 @@
       "lightNumber": "85",
       "lon": 34.82925154176746,
       "lat": 31.225010961614743,
-      "nearestNode": "n:34.8292535:31.2250559",
-      "distanceToNodeM": 4.97,
-      "matched": true
+      "nearestNode": "n:34.8308515:31.2261996",
+      "distanceToNodeM": 201.12,
+      "matched": false
     },
     {
       "id": "light:24",
@@ -437,9 +437,9 @@
       "lightNumber": "30",
       "lon": 34.79674624478066,
       "lat": 31.241051583611963,
-      "nearestNode": "n:34.7967241:31.2410319",
-      "distanceToNodeM": 3.03,
-      "matched": true
+      "nearestNode": "n:34.7953623:31.2424811",
+      "distanceToNodeM": 205.71,
+      "matched": false
     },
     {
       "id": "light:49",
@@ -662,9 +662,9 @@
       "lightNumber": "52",
       "lon": 34.80087741071166,
       "lat": 31.260929944709915,
-      "nearestNode": "n:34.800883:31.2609316",
-      "distanceToNodeM": 0.56,
-      "matched": true
+      "nearestNode": "n:34.7983598:31.260996",
+      "distanceToNodeM": 239.71,
+      "matched": false
     },
     {
       "id": "light:74",
@@ -797,9 +797,9 @@
       "lightNumber": "83",
       "lon": 34.82764095758172,
       "lat": 31.225500211952912,
-      "nearestNode": "n:34.8276494:31.2255195",
-      "distanceToNodeM": 2.28,
-      "matched": true
+      "nearestNode": "n:34.8255269:31.2269639",
+      "distanceToNodeM": 258.18,
+      "matched": false
     },
     {
       "id": "light:89",
@@ -950,9 +950,9 @@
       "lightNumber": "30",
       "lon": 34.796918016356216,
       "lat": 31.24109242164114,
-      "nearestNode": "n:34.7969254:31.2410821",
-      "distanceToNodeM": 1.34,
-      "matched": true
+      "nearestNode": "n:34.7953623:31.2424811",
+      "distanceToNodeM": 213.27,
+      "matched": false
     },
     {
       "id": "light:106",
@@ -1058,8 +1058,8 @@
       "lightNumber": "33",
       "lon": 34.82621173890285,
       "lat": 31.257210930108975,
-      "nearestNode": "n:34.8262209:31.25721",
-      "distanceToNodeM": 0.88,
+      "nearestNode": "n:34.8260453:31.2573332",
+      "distanceToNodeM": 20.82,
       "matched": true
     },
     {
@@ -1175,8 +1175,8 @@
       "lightNumber": "33",
       "lon": 34.82630636606164,
       "lat": 31.257294035859623,
-      "nearestNode": "n:34.8263255:31.2573019",
-      "distanceToNodeM": 2.02,
+      "nearestNode": "n:34.8261528:31.2574282",
+      "distanceToNodeM": 20.82,
       "matched": true
     },
     {
@@ -1184,9 +1184,9 @@
       "lightNumber": "85",
       "lon": 34.829294918684106,
       "lat": 31.225144870248194,
-      "nearestNode": "n:34.8292984:31.2251909",
-      "distanceToNodeM": 5.1,
-      "matched": true
+      "nearestNode": "n:34.8308515:31.2261996",
+      "distanceToNodeM": 188.52,
+      "matched": false
     },
     {
       "id": "light:132",
@@ -1265,9 +1265,9 @@
       "lightNumber": "83",
       "lon": 34.82758955415951,
       "lat": 31.22537657186149,
-      "nearestNode": "n:34.8276011:31.2253762",
-      "distanceToNodeM": 1.1,
-      "matched": true
+      "nearestNode": "n:34.8255269:31.2269639",
+      "distanceToNodeM": 263.29,
+      "matched": false
     },
     {
       "id": "light:141",
@@ -1580,9 +1580,9 @@
       "lightNumber": "52",
       "lon": 34.80088745532172,
       "lat": 31.261032847370164,
-      "nearestNode": "n:34.8008883:31.2610403",
-      "distanceToNodeM": 0.83,
-      "matched": true
+      "nearestNode": "n:34.7983604:31.2610824",
+      "distanceToNodeM": 240.56,
+      "matched": false
     },
     {
       "id": "light:176",
@@ -2183,8 +2183,8 @@
       "lightNumber": "",
       "lon": 34.80882603545923,
       "lat": 31.243895057763808,
-      "nearestNode": "n:34.8087322:31.2437881",
-      "distanceToNodeM": 14.82,
+      "nearestNode": "n:34.8087463:31.2440104",
+      "distanceToNodeM": 14.84,
       "matched": true
     },
     {
@@ -2192,8 +2192,8 @@
       "lightNumber": "",
       "lon": 34.805485042412904,
       "lat": 31.191387203893967,
-      "nearestNode": "n:34.8054349:31.1913832",
-      "distanceToNodeM": 4.79,
+      "nearestNode": "n:34.8053252:31.1913044",
+      "distanceToNodeM": 17.75,
       "matched": true
     },
     {
@@ -2201,8 +2201,8 @@
       "lightNumber": "",
       "lon": 34.805518429379234,
       "lat": 31.191298180275975,
-      "nearestNode": "n:34.8054349:31.1913832",
-      "distanceToNodeM": 12.31,
+      "nearestNode": "n:34.8053252:31.1913044",
+      "distanceToNodeM": 18.4,
       "matched": true
     },
     {
@@ -2399,8 +2399,8 @@
       "lightNumber": "2",
       "lon": 34.7961418422987,
       "lat": 31.275222742089195,
-      "nearestNode": "n:34.7961412:31.2752206",
-      "distanceToNodeM": 0.24,
+      "nearestNode": "n:34.7963162:31.2753049",
+      "distanceToNodeM": 18.92,
       "matched": true
     },
     {
@@ -2408,8 +2408,8 @@
       "lightNumber": "2",
       "lon": 34.79626108762534,
       "lat": 31.27510306337687,
-      "nearestNode": "n:34.7962636:31.2750863",
-      "distanceToNodeM": 1.87,
+      "nearestNode": "n:34.7964354:31.2751721",
+      "distanceToNodeM": 18.26,
       "matched": true
     },
     {
@@ -2471,18 +2471,18 @@
       "lightNumber": "31",
       "lon": 34.79492261077631,
       "lat": 31.242815370951465,
-      "nearestNode": "n:34.7949391:31.242794",
-      "distanceToNodeM": 2.84,
-      "matched": true
+      "nearestNode": "n:34.7953623:31.2424811",
+      "distanceToNodeM": 55.82,
+      "matched": false
     },
     {
       "id": "light:275",
       "lightNumber": "31",
       "lon": 34.794810565755206,
       "lat": 31.24268601628581,
-      "nearestNode": "n:34.7947808:31.2426934",
-      "distanceToNodeM": 2.95,
-      "matched": true
+      "nearestNode": "n:34.7953623:31.2424811",
+      "distanceToNodeM": 57.19,
+      "matched": false
     },
     {
       "id": "light:276",
@@ -2543,18 +2543,18 @@
       "lightNumber": "30",
       "lon": 34.796703689447874,
       "lat": 31.241102305373747,
-      "nearestNode": "n:34.7966763:31.2410904",
-      "distanceToNodeM": 2.92,
-      "matched": true
+      "nearestNode": "n:34.7953623:31.2424811",
+      "distanceToNodeM": 198.81,
+      "matched": false
     },
     {
       "id": "light:283",
       "lightNumber": "30",
       "lon": 34.796869573560315,
       "lat": 31.241154337297722,
-      "nearestNode": "n:34.7968766:31.2411458",
-      "distanceToNodeM": 1.16,
-      "matched": true
+      "nearestNode": "n:34.7953623:31.2424811",
+      "distanceToNodeM": 205.15,
+      "matched": false
     },
     {
       "id": "light:284",
@@ -2660,36 +2660,36 @@
       "lightNumber": "91",
       "lon": 34.8214206058091,
       "lat": 31.225671912489858,
-      "nearestNode": "n:34.8214567:31.2256653",
-      "distanceToNodeM": 3.51,
-      "matched": true
+      "nearestNode": "n:34.8217581:31.2266607",
+      "distanceToNodeM": 113.92,
+      "matched": false
     },
     {
       "id": "light:296",
       "lightNumber": "91",
       "lon": 34.821302838009984,
       "lat": 31.22569066421034,
-      "nearestNode": "n:34.8213363:31.225692",
-      "distanceToNodeM": 3.19,
-      "matched": true
+      "nearestNode": "n:34.8216381:31.2266868",
+      "distanceToNodeM": 114.64,
+      "matched": false
     },
     {
       "id": "light:297",
       "lightNumber": "91",
       "lon": 34.82132849559199,
       "lat": 31.225771663565368,
-      "nearestNode": "n:34.8213589:31.2257661",
-      "distanceToNodeM": 2.96,
-      "matched": true
+      "nearestNode": "n:34.8216381:31.2266868",
+      "distanceToNodeM": 105.36,
+      "matched": false
     },
     {
       "id": "light:298",
       "lightNumber": "91",
       "lon": 34.82144362685687,
       "lat": 31.225740208692677,
-      "nearestNode": "n:34.8214786:31.2257372",
-      "distanceToNodeM": 3.34,
-      "matched": true
+      "nearestNode": "n:34.8217581:31.2266607",
+      "distanceToNodeM": 106.06,
+      "matched": false
     },
     {
       "id": "light:299",
@@ -3065,8 +3065,8 @@
       "lightNumber": "90",
       "lon": 34.74378098901341,
       "lat": 31.265909882433398,
-      "nearestNode": "n:34.7437428:31.2659254",
-      "distanceToNodeM": 4.02,
+      "nearestNode": "n:34.7439212:31.2659998",
+      "distanceToNodeM": 16.64,
       "matched": true
     },
     {
@@ -3857,8 +3857,8 @@
       "lightNumber": "",
       "lon": 34.77934630895364,
       "lat": 31.243281662194164,
-      "nearestNode": "n:34.7792942:31.2432213",
-      "distanceToNodeM": 8.31,
+      "nearestNode": "n:34.7792909:31.2434286",
+      "distanceToNodeM": 17.08,
       "matched": true
     },
     {

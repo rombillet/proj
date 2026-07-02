@@ -91,14 +91,28 @@ function drawRoads() {
 }
 
 function drawNodes() {
-  if (!showNodesEl.checked) return;
-  const radius = state.view.scale > 0.05 ? 2.3 : 1.5;
-  ctx.fillStyle = "rgba(22, 63, 56, 0.38)";
+  const radius = state.view.scale > 0.05 ? 2.1 : 1.4;
+  if (showNodesEl.checked) {
+    ctx.fillStyle = "rgba(62, 82, 86, 0.28)";
+    for (const node of state.nodes) {
+      if (node.hasLight) continue;
+      const [x, y] = toScreen(node.point);
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  ctx.fillStyle = "#123f35";
   for (const node of state.nodes) {
+    if (!node.hasLight) continue;
     const [x, y] = toScreen(node.point);
     ctx.beginPath();
-    ctx.arc(x, y, node.hasLight ? radius + 1.5 : radius, 0, Math.PI * 2);
+    ctx.arc(x, y, radius + 2.3, 0, Math.PI * 2);
     ctx.fill();
+    ctx.lineWidth = 1.5;
+    ctx.strokeStyle = "#ffffff";
+    ctx.stroke();
   }
 }
 

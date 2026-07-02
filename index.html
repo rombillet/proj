@@ -15,7 +15,7 @@
         </div>
 
         <section class="stats" aria-label="Map statistics">
-          <div><span id="nodeCount">-</span><label>graph nodes</label></div>
+          <div><span id="nodeCount">-</span><label>topology nodes</label></div>
           <div><span id="roadCount">-</span><label>directed edges</label></div>
           <div><span id="lightCount">-</span><label>traffic lights</label></div>
           <div><span id="matchedCount">-</span><label>matched lights</label></div>
@@ -27,8 +27,8 @@
           <button id="fitRoads" type="button">Fit Roads</button>
           <button id="fitAll" type="button">Fit All</button>
           <label class="toggle">
-            <input id="showNodes" type="checkbox" checked>
-            Show graph nodes
+            <input id="showNodes" type="checkbox">
+            Show all topology nodes
           </label>
           <label class="toggle">
             <input id="showUnmatched" type="checkbox" checked>
@@ -38,7 +38,8 @@
 
         <section class="legend" aria-label="Map legend">
           <div><i class="road"></i> Generated directed roads</div>
-          <div><i class="node"></i> Graph node</div>
+          <div><i class="signal-node"></i> Signal graph node</div>
+          <div><i class="node"></i> Other topology node</div>
           <div><i class="matched"></i> Matched traffic light</div>
           <div><i class="unmatched"></i> Unmatched traffic light</div>
         </section>

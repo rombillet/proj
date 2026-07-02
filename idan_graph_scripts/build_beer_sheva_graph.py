@@ -116,12 +116,10 @@ def road_feature_key(feature, index):
     return (feature.get("properties") or {}).get("@id") or f"feature:{index}"
 
 
-def collect_road_features(roads_geojson):
-    road_features = []
+def collect_road_topology(roads_geojson):
+    directed_segments = []
     coord_by_id = {}
     neighbors = defaultdict(set)
-    road_refs = defaultdict(set)
-    endpoint_counts = defaultdict(int)
 
     for feature_index, feature in enumerate(roads_geojson.get("features", [])):
         props = feature.get("properties", {})
@@ -130,31 +128,54 @@ def collect_road_features(roads_geojson):
         if len(points) < 2:
             continue
 
-        feature_key = road_feature_key(feature, feature_index)
-        road_features.append({"props": props, "points": points, "feature_key": feature_key})
-
         for lon, lat in points:
             nid = node_id(lon, lat)
             coord_by_id.setdefault(nid, (lon, lat))
-            road_refs[nid].add(feature_key)
 
-        endpoint_counts[node_id(*points[0])] += 1
-        endpoint_counts[node_id(*points[-1])] += 1
-
-        for start, end in zip(points, points[1:]):
+        oneway = str(props.get("oneway", "")).lower()
+        feature_key = road_feature_key(feature, feature_index).replace("/", "_")
+        for segment_index, (start, end) in enumerate(zip(points, points[1:])):
             start_id = node_id(*start)
             end_id = node_id(*end)
             if start_id == end_id:
                 continue
+
             neighbors[start_id].add(end_id)
             neighbors[end_id].add(start_id)
 
-    important_node_ids = {
-        nid
-        for nid in coord_by_id
-        if endpoint_counts[nid] > 0 or len(neighbors[nid]) != 2 or len(road_refs[nid]) > 1
-    }
-    return road_features, coord_by_id, important_node_ids
+            if oneway == "-1":
+                directed_segments.append(
+                    {
+                        "id": f"{feature_key}:{segment_index}r",
+                        "source": end_id,
+                        "target": start_id,
+                        "points": [end, start],
+                        "props": props,
+                    }
+                )
+            else:
+                directed_segments.append(
+                    {
+                        "id": f"{feature_key}:{segment_index}f",
+                        "source": start_id,
+                        "target": end_id,
+                        "points": [start, end],
+                        "props": props,
+                    }
+                )
+                if oneway not in {"yes", "true", "1"}:
+                    directed_segments.append(
+                        {
+                            "id": f"{feature_key}:{segment_index}r",
+                            "source": end_id,
+                            "target": start_id,
+                            "points": [end, start],
+                            "props": props,
+                        }
+                    )
+
+    important_node_ids = {nid for nid in coord_by_id if len(neighbors[nid]) != 2}
+    return directed_segments, coord_by_id, important_node_ids
 
 
 def build_road_graph(roads_geojson):
@@ -164,39 +185,54 @@ def build_road_graph(roads_geojson):
     incoming = defaultdict(list)
     outgoing = defaultdict(list)
 
-    road_features, coord_by_id, important_node_ids = collect_road_features(roads_geojson)
+    directed_segments, coord_by_id, important_node_ids = collect_road_topology(roads_geojson)
     for nid in important_node_ids:
         lon, lat = coord_by_id[nid]
         nodes[nid] = {"id": nid, "lon": lon, "lat": lat, "x": lon, "y": lat}
 
-    for road_feature in road_features:
-        props = road_feature["props"]
-        points = road_feature["points"]
-        important_indices = [index for index, point in enumerate(points) if node_id(*point) in important_node_ids]
-        if len(important_indices) < 2:
+    outgoing_segments = defaultdict(list)
+    for segment in directed_segments:
+        outgoing_segments[segment["source"]].append(segment)
+
+    visited = set()
+    chain_index = 0
+    for segment in directed_segments:
+        if segment["id"] in visited or segment["source"] not in important_node_ids:
             continue
 
-        oneway = str(props.get("oneway", "")).lower()
-        for chunk_index, (start_index, end_index) in enumerate(zip(important_indices, important_indices[1:])):
-            chunk = points[start_index : end_index + 1]
-            start_id = node_id(*chunk[0])
-            end_id = node_id(*chunk[-1])
-            if start_id == end_id:
-                continue
+        chain_segments = [segment]
+        visited.add(segment["id"])
+        previous = segment["source"]
+        current = segment["target"]
 
-            if oneway == "-1":
-                add_edge(graph_edges, roadnet_roads, end_id, start_id, list(reversed(chunk)), props, f"{chunk_index}r")
-                outgoing[end_id].append(roadnet_roads[-1]["id"])
-                incoming[start_id].append(roadnet_roads[-1]["id"])
-            else:
-                add_edge(graph_edges, roadnet_roads, start_id, end_id, chunk, props, f"{chunk_index}f")
-                outgoing[start_id].append(roadnet_roads[-1]["id"])
-                incoming[end_id].append(roadnet_roads[-1]["id"])
+        while current not in important_node_ids:
+            candidates = [
+                candidate
+                for candidate in outgoing_segments[current]
+                if candidate["id"] not in visited and candidate["target"] != previous
+            ]
+            if len(candidates) != 1:
+                break
+            next_segment = candidates[0]
+            chain_segments.append(next_segment)
+            visited.add(next_segment["id"])
+            previous = current
+            current = next_segment["target"]
 
-                if oneway not in {"yes", "true", "1"}:
-                    add_edge(graph_edges, roadnet_roads, end_id, start_id, list(reversed(chunk)), props, f"{chunk_index}r")
-                    outgoing[end_id].append(roadnet_roads[-1]["id"])
-                    incoming[start_id].append(roadnet_roads[-1]["id"])
+        start_id = chain_segments[0]["source"]
+        end_id = chain_segments[-1]["target"]
+        if start_id == end_id or start_id not in nodes or end_id not in nodes:
+            continue
+
+        points = list(chain_segments[0]["points"])
+        for next_segment in chain_segments[1:]:
+            points.extend(next_segment["points"][1:])
+
+        props = chain_segments[0]["props"]
+        add_edge(graph_edges, roadnet_roads, start_id, end_id, points, props, f"chain{chain_index}")
+        outgoing[start_id].append(roadnet_roads[-1]["id"])
+        incoming[end_id].append(roadnet_roads[-1]["id"])
+        chain_index += 1
 
     return nodes, graph_edges, roadnet_roads, incoming, outgoing
 

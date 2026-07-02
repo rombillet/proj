@@ -132,7 +132,13 @@ button + button {
 .legend .node {
   width: 12px;
   height: 12px;
-  background: rgba(22, 63, 56, 0.48);
+  background: rgba(62, 82, 86, 0.34);
+}
+
+.legend .signal-node {
+  width: 12px;
+  height: 12px;
+  background: #123f35;
 }
 
 .legend .matched {
